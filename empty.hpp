@@ -25,7 +25,7 @@ class Empty : public Space
         // virtual string get_proximity_option1(){};
         // string get_proximity_option1();
         // string get_proximity_option2();
-        void do_stuff();
+        void doStuff();
 
 
 

@@ -4,6 +4,7 @@
 #include "menu.hpp"
 #include "empty.hpp"
 #include "gameboard.hpp"
+#include "player.hpp"
 
 
 using std::endl;
@@ -27,7 +28,9 @@ int main()
     cout << empty.left;
     cout << empty.down;
     cout << empty.proximity_option2;
-    Gameboard gb;
-    gb.createBoard("level_1.txt");
+
+    Player player;
+    cout << player.up;
+    Gameboard gb("level_1.txt");
     return 0;
 }

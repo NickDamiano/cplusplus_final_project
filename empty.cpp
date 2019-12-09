@@ -2,7 +2,8 @@
 
 Empty::Empty()
 {
-
+    proximity_option1 = "move";
+    proximity_option2 = "nothing";
 }
 
 Empty::~Empty()
@@ -10,7 +11,7 @@ Empty::~Empty()
 
 }
 
-void Empty::do_stuff()
+void Empty::doStuff()
 {
     
 }

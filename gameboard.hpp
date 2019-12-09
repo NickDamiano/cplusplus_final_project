@@ -2,6 +2,7 @@
 #define GAMEBOARD_HPP
 
 #include "space.hpp"
+#include "player.hpp"
 #include "empty.hpp"
 #include <string>
 #include <iostream>
@@ -25,14 +26,18 @@ class Gameboard
         std::ifstream infile;
         Space* gameboard[4][9];
         Space* temp_space;
+        int map[4][9];
+        vector<Space*> all_spaces;
+        string temp_string;
         
         
         
 
     public:
-        Gameboard();
+        Gameboard(string level_name);
         ~Gameboard();
         void createBoard(string level_name);
-        void createMatrix(string level_name);
+        void createMap(string level_name);
+        Space* getSpaceType(int type);
 };
 #endif
