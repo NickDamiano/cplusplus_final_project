@@ -1,3 +1,10 @@
+/*********************************************************************************
+author: Nicholas Damiano
+filename: can.hpp
+date: 8 Dec 19
+description: Inherits from Space class. Represents a beer can. special ability pushes
+beer can into user inventory. User can only hold one beer can at a time. 
+*********************************************************************************/
 #ifndef CAN_HPP
 #define CAN_HPP
 
