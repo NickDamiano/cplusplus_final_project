@@ -34,23 +34,73 @@ void GameController::Run(string level_name)
         cout << rounds - i - 1 << " remaining turns\n";
         action_choice = gb.listOptions();
         if(action_choice == 1)
+        {
             if(player_row!=0)
             {
-                cout << "in the logic \n";
                 target_loc = player_object->up->doStuff();
                 // If it's an empty space
                 if(target_loc->proximity_option1 == "move")
                 {
-                    cout << "logic part 2\n";
                     // change gameboard pointer for target space to point to player
                     gb.set_new_mem(player_row-1, player_col, player_object );
                     // change playerl ocation to old space
                     gb.set_new_mem(player_row, player_col, target_loc);
                     gb.update_player_map(player_row-1, player_col);
-
-                    
                 }
             }
+        }
+
+        if(action_choice == 2)
+        {
+            if(player_col!=8)
+            {
+                target_loc = player_object->right->doStuff();
+                // If it's an empty space
+                if(target_loc->proximity_option1 == "move")
+                {
+                    // change gameboard pointer for target space to point to player
+                    gb.set_new_mem(player_row, player_col+1, player_object );
+                    // change playerl ocation to old space
+                    gb.set_new_mem(player_row, player_col, target_loc);
+                    gb.update_player_map(player_row, player_col+1);
+                }
+            }
+        }
+
+        if(action_choice == 3)
+        {
+            if(player_row!=3)
+            {
+                target_loc = player_object->down->doStuff();
+                // If it's an empty space
+                if(target_loc->proximity_option1 == "move")
+                {
+                    // change gameboard pointer for target space to point to player
+                    gb.set_new_mem(player_row+1, player_col, player_object );
+                    // change playerl ocation to old space
+                    gb.set_new_mem(player_row, player_col, target_loc);
+                    gb.update_player_map(player_row+1, player_col);
+                }
+            }
+        }
+
+        if(action_choice == 4)
+        {
+            if(player_col!=0)
+            {
+                target_loc = player_object->left->doStuff();
+                // If it's an empty space
+                if(target_loc->proximity_option1 == "move")
+                {
+                    // change gameboard pointer for target space to point to player
+                    gb.set_new_mem(player_row, player_col-1, player_object );
+                    // change playerl ocation to old space
+                    gb.set_new_mem(player_row, player_col, target_loc);
+                    gb.update_player_map(player_row, player_col-1);
+                }
+            }
+        }
+            
         gb.update_linked_list();
                 
         
