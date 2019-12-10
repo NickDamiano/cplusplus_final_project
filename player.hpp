@@ -1,3 +1,10 @@
+/*********************************************************************************
+author: Nicholas Damiano
+filename: player.hpp
+date: 8 Dec 19
+description: Inherits from Space class. Represents the player. 
+*********************************************************************************/
+
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 

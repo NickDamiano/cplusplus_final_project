@@ -1,3 +1,11 @@
+/*********************************************************************************
+author: Nicholas Damiano
+filename: space.hpp
+date: 8 Dec 19
+description: Virtual class for space on the board. Empty, Garbage_bin, Player, and 
+can all inherit from this. 
+*********************************************************************************/
+
 #include "space.hpp"
 
 Space::Space()

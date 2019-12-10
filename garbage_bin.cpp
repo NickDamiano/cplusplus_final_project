@@ -1,3 +1,9 @@
+/*********************************************************************************
+author: Nicholas Damiano
+filename: garbage_bin.cpp
+date: 8 Dec 19
+description: Inherits from Space class and pops out the can
+*********************************************************************************/
 #include "garbage_bin.hpp"
 #include <queue>
 

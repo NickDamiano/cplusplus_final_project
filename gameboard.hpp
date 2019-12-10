@@ -1,3 +1,12 @@
+/*********************************************************************************
+author: Nicholas Damiano
+filename: gameboard.hpp
+date: 8 Dec 19
+description: Gameboard i responsible for creating a 2d array of integers based off
+the level text file. It also displays the board and creates the linked list based off
+the 2d array of space pointers. 
+*********************************************************************************/
+
 #ifndef GAMEBOARD_HPP
 #define GAMEBOARD_HPP
 

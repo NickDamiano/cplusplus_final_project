@@ -1,7 +1,17 @@
+/*********************************************************************************
+author: Nicholas Damiano
+filename: gameboard.hpp
+date: 8 Dec 19
+description: Gameboard i responsible for creating a 2d array of integers based off
+the level text file. It also displays the board and creates the linked list based off
+the 2d array of space pointers. 
+*********************************************************************************/
 #include "gameboard.hpp"
 #include <queue>
 #include "menu.hpp"
 
+// constructor creates the game map from the level file, sets up the gameboard, and links all 
+// spaces together
 Gameboard::Gameboard(string level_name)
 {
     createMap(level_name);
@@ -9,6 +19,7 @@ Gameboard::Gameboard(string level_name)
     update_linked_list();
 }
 
+// destructor iterates through container holding dynamically created memory and deletes them
 Gameboard::~Gameboard()
 {
     for (int i = 0;i< all_spaces.size(); i++)
@@ -18,6 +29,8 @@ Gameboard::~Gameboard()
     }
 }
 
+// Creates the map by opening the file and iterating through putting integers
+// into a 2d array of ints
 void Gameboard::createMap(string level_name)
 {
     infile.open(level_name);
@@ -32,6 +45,9 @@ void Gameboard::createMap(string level_name)
     infile.close();
 }
 
+// This creates the actual spaces based off the integer on the 2d array
+// it then pushes them into our all_spaces container to be deleted later 
+// and returns the pointer to the newly created space. 
 Space* Gameboard::getSpaceType(int type)
 {
     Space* spaceType = nullptr;
@@ -62,6 +78,8 @@ Space* Gameboard::getSpaceType(int type)
     }
 }
 
+// Creates the board of 2d pointers that is used for reference when
+// linking spaces together
 void Gameboard::createBoard(string level_name)
 {
 
@@ -76,6 +94,7 @@ void Gameboard::createBoard(string level_name)
 
 }
 
+// lists all options for the player based off surrounding tiles
 int Gameboard::listOptions()
 {
     Menu menu;
@@ -127,14 +146,10 @@ int Gameboard::listOptions()
     string user_choice_message = "Please select from an option below\n1 - " + up_option + "\n2 - " + right_option + "\n3 - " + down_option + "\n4- " + left_option + ": ";
     int user_choice = menu.full_int_check(user_choice_message, 1, 4);
     return user_choice;
-    // This should be called from a controller
-    // returns the choice
-    // if 1, performs action for space above, if 2, action for space right
-    // 
-
     
 }
 
+// Returns the row number of player
 int Gameboard::get_player_row()
 {
     for(int i = 0;i<4; i++)
@@ -149,6 +164,7 @@ int Gameboard::get_player_row()
     }
 }
 
+// returns column number of player
 int Gameboard::get_player_col()
 {
     for(int i = 0;i<4; i++)
@@ -163,6 +179,7 @@ int Gameboard::get_player_col()
     }
 }
 
+// displays the board visually for the player
 void Gameboard::displayBoard()
 {
     cout << "PL = player; BC = Beer Can; GB = Garbage Bin\n";
@@ -194,6 +211,7 @@ void Gameboard::displayBoard()
     cout << "------------------\n" << endl;
 }
 
+// returns pointer for space of player
 Space* Gameboard::get_player()
 {
     for(int i = 0;i<4; i++)
@@ -208,6 +226,7 @@ Space* Gameboard::get_player()
     }
 }
 
+// uses the 2d pointer array to update all gameboard neighboring space memory locations
 void Gameboard::update_linked_list()
 {
     // set left link to nullptr for first row and right link to null for last
@@ -250,23 +269,16 @@ void Gameboard::update_linked_list()
             gameboard[i][j]->up = gameboard[i-1][j];
         }
     }
-    // for(int j = 0;j<8;j++)
-    // {
-    //     gameboard[0][j]->right = gameboard[0][j+1];
-    //     gameboard[0][j]->down = gameboard[1][j];
-    // }
-    // for(int j = 1;j<9;j++)
-    // {
-    //     gameboard[0][j]->right = gameboard[0][j+1];
-    //     gameboard[0][j]->down = gameboard[1][j];
-    // }
 }
 
+// updates the gameboard 2d array of pointers with a new pointer after the player moves
+// or a can is picked up
 void Gameboard::set_new_mem(int row, int col, Space* space_pointer)
 {
     gameboard[row][col] = space_pointer;
 }
 
+// updates the player map after the player moves, or can is picked up
 void Gameboard::update_player_map(int row, int col)
 {
     for(int i = 0;i<4; i++)
@@ -282,6 +294,8 @@ void Gameboard::update_player_map(int row, int col)
     }
 }
 
+// simply puts a 0 representing a space on the 2d array of integers used
+// to display game map
 void Gameboard::replace_can_with_space(int row, int col)
 {
     map[row][col] = 0;
@@ -293,6 +307,8 @@ void Gameboard::add_space_to_vector(Space* space_loc)
     all_spaces.push_back(space_loc);
 }
 
+// iterates through all spaces and inventory to see if all cans have been thrown away and returns
+// true if they have triggering victory conditions
 bool Gameboard::can_check(std::queue<Space*>&inventory)
 {
     bool result = true;

@@ -1,3 +1,11 @@
+/*********************************************************************************
+author: Nicholas Damiano
+filename: game_controller.hpp
+date: 8 Dec 19
+description: The game controller has the main loop for the game. Rounds can be tweaked
+to make the game harder or easier. The main Run method lists options and handles the
+user input on how to move as well as swapping spaces. 
+*********************************************************************************/
 #ifndef GAME_CONTROLLER_HPP
 #define GAME_CONTROLLER_HPP
 
@@ -24,7 +32,6 @@ class GameController
     public:
         GameController(string level_name);
         ~GameController();
-        void ExecuteRound();
         bool Run(string level_name);
 
 };

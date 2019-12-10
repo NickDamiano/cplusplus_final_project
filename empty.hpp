@@ -1,3 +1,10 @@
+/*********************************************************************************
+author: Nicholas Damiano
+filename: empty.hpp
+date: 8 Dec 19
+description: Inherits from Space class. Is an empty actual space that can be navigated to
+*********************************************************************************/
+
 #ifndef EMPTY_HPP
 #define EMPTY_HPP
 
@@ -14,18 +21,6 @@ class Empty : public Space
     public:
         Empty();
         ~Empty();
-        // Space* up       = nullptr;
-        // Space* right    = nullptr;
-        // Space* down     = nullptr;
-        // Space* left     = nullptr;
-        // string proximity_option1 = "";
-        // string proximity_option2 = "";
-        // string type;
-        // Space();
-        // ~Space();
-        // virtual string get_proximity_option1(){};
-        // string get_proximity_option1();
-        // string get_proximity_option2();
         Space* doStuff(std::queue<Space*>&inventory);
 
 };

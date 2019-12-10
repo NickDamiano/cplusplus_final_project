@@ -1,3 +1,9 @@
+/*********************************************************************************
+author: Nicholas Damiano
+filename: player.cpp
+date: 8 Dec 19
+description: Inherits from Space class. Represents the player. 
+*********************************************************************************/
 #include "player.hpp"
 #include <queue>
 
@@ -8,7 +14,6 @@ Player::Player()
 }
 void Player::listOptions()
 {
-    // should list options arounnd player to do 
     
 }
 
