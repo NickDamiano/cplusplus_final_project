@@ -11,7 +11,9 @@ Empty::~Empty()
 
 }
 
-void Empty::doStuff()
+Space* Empty::doStuff()
 {
-    
+    // swap with player
+    return this;
+
 }

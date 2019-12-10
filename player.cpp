@@ -11,7 +11,7 @@ void Player::listOptions()
     
 }
 
-void Player::doStuff()
+Space* Player::doStuff()
 {
 
 }

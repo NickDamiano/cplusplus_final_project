@@ -19,7 +19,7 @@ class Space
         string type;
         Space();
         ~Space();
-        virtual void doStuff(){};
+        virtual Space* doStuff(){};
         string get_proximity_option1();
         string get_proximity_option2();
 };

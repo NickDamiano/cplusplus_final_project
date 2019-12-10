@@ -13,6 +13,6 @@ class Player : public Space
     public:
         Player();
         void listOptions();
-        void doStuff();
+        Space* doStuff();
 };
 #endif
