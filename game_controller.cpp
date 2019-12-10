@@ -37,40 +37,38 @@ void GameController::Run(string level_name)
         string target_action = "";
         if(action_choice == 1)
         {
-            // Can
-            if(player_object->up->get_proximity_option1() == "Pick Up Beer Can")
-            {
-                cout << "in beer can." << endl;
-                if(inventory.empty())
-                {
-                    target_loc = player_object->up->doStuff(inventory);
-                    cout << "invnetory was empty.\n";
-                    Space* new_space = new Empty();
-                    // Push that new space into the vector of spaces to delete later
-                    gb.add_space_to_vector(new_space);
-                    // set the board's memory space to be that new space
-                    gb.set_new_mem(player_row-1, player_col, new_space );
-                    gb.replace_can_with_space(player_row-1, player_col);
-
-                }
-                else
-                    cout << "Your inventory is full. You can only carry one can because you are so drunk still.\nPlease place the can in the garbage bin.\n";
-            }
-            
-            
-    
             // Movement
             if(player_row!=0)
             {
-                target_loc = player_object->up->doStuff(inventory);
                 // If it's an empty space
-                if(target_loc->proximity_option1 == "move")
+                if(player_object->up->proximity_option1 == "move")
                 {
+                    target_loc = player_object->up->doStuff(inventory);
                     // change gameboard pointer for target space to point to player
                     gb.set_new_mem(player_row-1, player_col, player_object );
                     // change playerl ocation to old space
                     gb.set_new_mem(player_row, player_col, target_loc);
                     gb.update_player_map(player_row-1, player_col);
+                }
+
+                // Can
+                if(player_object->up->get_proximity_option1() == "Pick Up Beer Can")
+                {
+                    cout << "in beer can." << endl;
+                    if(inventory.empty())
+                    {
+                        target_loc = player_object->up->doStuff(inventory);
+                        cout << "invnetory was empty.\n";
+                        Space* new_space = new Empty();
+                        // Push that new space into the vector of spaces to delete later
+                        gb.add_space_to_vector(new_space);
+                        // set the board's memory space to be that new space
+                        gb.set_new_mem(player_row-1, player_col, new_space );
+                        gb.replace_can_with_space(player_row-1, player_col);
+
+                    }
+                    else
+                        cout << "Your inventory is full. You can only carry one can because you are so drunk still.\nPlease place the can in the garbage bin.\n";
                 }
             }
         }
@@ -79,15 +77,34 @@ void GameController::Run(string level_name)
         {
             if(player_col!=8)
             {
-                target_loc = player_object->right->doStuff(inventory);
                 // If it's an empty space
-                if(target_loc->proximity_option1 == "move")
+                if(player_object->right->proximity_option1 == "move")
                 {
+                    target_loc = player_object->right->doStuff(inventory);
                     // change gameboard pointer for target space to point to player
                     gb.set_new_mem(player_row, player_col+1, player_object );
                     // change playerl ocation to old space
                     gb.set_new_mem(player_row, player_col, target_loc);
                     gb.update_player_map(player_row, player_col+1);
+                }
+                // Can
+                if(player_object->right->get_proximity_option1() == "Pick Up Beer Can")
+                {
+                    cout << "in beer can." << endl;
+                    if(inventory.empty())
+                    {
+                        target_loc = player_object->right->doStuff(inventory);
+                        cout << "invnetory was empty.\n";
+                        Space* new_space = new Empty();
+                        // Push that new space into the vector of spaces to delete later
+                        gb.add_space_to_vector(new_space);
+                        // set the board's memory space to be that new space
+                        gb.set_new_mem(player_row, player_col+1, new_space );
+                        gb.replace_can_with_space(player_row, player_col+1);
+
+                    }
+                    else
+                        cout << "Your inventory is full. You can only carry one can because you are so drunk still.\nPlease place the can in the garbage bin.\n";
                 }
             }
         }
@@ -96,15 +113,35 @@ void GameController::Run(string level_name)
         {
             if(player_row!=3)
             {
-                target_loc = player_object->down->doStuff(inventory);
                 // If it's an empty space
-                if(target_loc->proximity_option1 == "move")
+                if(player_object->down->proximity_option1 == "move")
                 {
+                    target_loc = player_object->down->doStuff(inventory);
                     // change gameboard pointer for target space to point to player
                     gb.set_new_mem(player_row+1, player_col, player_object );
                     // change playerl ocation to old space
                     gb.set_new_mem(player_row, player_col, target_loc);
                     gb.update_player_map(player_row+1, player_col);
+                }
+
+                // Can
+                if(player_object->down->get_proximity_option1() == "Pick Up Beer Can")
+                {
+                    cout << "in beer can." << endl;
+                    if(inventory.empty())
+                    {
+                        target_loc = player_object->down->doStuff(inventory);
+                        cout << "invnetory was empty.\n";
+                        Space* new_space = new Empty();
+                        // Push that new space into the vector of spaces to delete later
+                        gb.add_space_to_vector(new_space);
+                        // set the board's memory space to be that new space
+                        gb.set_new_mem(player_row+1, player_col, new_space );
+                        gb.replace_can_with_space(player_row+1, player_col);
+
+                    }
+                    else
+                        cout << "Your inventory is full. You can only carry one can because you are so drunk still.\nPlease place the can in the garbage bin.\n";
                 }
             }
         }
@@ -113,15 +150,34 @@ void GameController::Run(string level_name)
         {
             if(player_col!=0)
             {
-                target_loc = player_object->left->doStuff(inventory);
                 // If it's an empty space
-                if(target_loc->proximity_option1 == "move")
+                if(player_object->left->proximity_option1 == "move")
                 {
+                    target_loc = player_object->left->doStuff(inventory);
                     // change gameboard pointer for target space to point to player
                     gb.set_new_mem(player_row, player_col-1, player_object );
                     // change playerl ocation to old space
                     gb.set_new_mem(player_row, player_col, target_loc);
                     gb.update_player_map(player_row, player_col-1);
+                }
+                // Can
+                if(player_object->left->get_proximity_option1() == "Pick Up Beer Can")
+                {
+                    cout << "in beer can." << endl;
+                    if(inventory.empty())
+                    {
+                        target_loc = player_object->left->doStuff(inventory);
+                        cout << "invnetory was empty.\n";
+                        Space* new_space = new Empty();
+                        // Push that new space into the vector of spaces to delete later
+                        gb.add_space_to_vector(new_space);
+                        // set the board's memory space to be that new space
+                        gb.set_new_mem(player_row, player_col-1, new_space );
+                        gb.replace_can_with_space(player_row, player_col-1);
+
+                    }
+                    else
+                        cout << "Your inventory is full. You can only carry one can because you are so drunk still.\nPlease place the can in the garbage bin.\n";
                 }
             }
         }
