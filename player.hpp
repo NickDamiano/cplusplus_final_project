@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "space.hpp"
+#include <queue>
 
 class Player : public Space
 {
@@ -13,6 +14,6 @@ class Player : public Space
     public:
         Player();
         void listOptions();
-        Space* doStuff();
+        Space* doStuff(std::queue<Space*>&inventory);
 };
 #endif

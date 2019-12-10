@@ -4,6 +4,11 @@
 #include <iostream>
 #include <string>
 #include "gameboard.hpp"
+#include <vector>
+#include <queue>
+
+using std::queue;
+using std::vector;
 
 class GameController
 {
@@ -14,6 +19,7 @@ class GameController
         bool no_cans = false;
         int player_col;
         int player_row;
+        queue<Space*> inventory;
 
     public:
         GameController(string level_name);

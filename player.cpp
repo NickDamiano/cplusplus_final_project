@@ -1,4 +1,5 @@
 #include "player.hpp"
+#include <queue>
 
 
 Player::Player()
@@ -11,7 +12,7 @@ void Player::listOptions()
     
 }
 
-Space* Player::doStuff()
+Space* Player::doStuff(std::queue<Space*>&inventory)
 {
 
 }

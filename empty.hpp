@@ -2,6 +2,7 @@
 #define EMPTY_HPP
 
 #include <string>
+#include <queue>
 #include "space.hpp"
 using std::string;
 
@@ -25,7 +26,7 @@ class Empty : public Space
         // virtual string get_proximity_option1(){};
         // string get_proximity_option1();
         // string get_proximity_option2();
-        Space* doStuff();
+        Space* doStuff(std::queue<Space*>&inventory);
 
 };
 

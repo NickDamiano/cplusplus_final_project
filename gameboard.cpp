@@ -294,3 +294,14 @@ void Gameboard::update_player_map(int row, int col)
         }
     }
 }
+
+void Gameboard::replace_can_with_space(int row, int col)
+{
+    map[row][col] = 0;
+}
+// if we pick up a can we have to replace it's location with an empty space. We have to be able
+// to delete that empty space later so all spaces to delete are in all_spaces
+void Gameboard::add_space_to_vector(Space* space_loc)
+{
+    all_spaces.push_back(space_loc);
+}

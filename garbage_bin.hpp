@@ -3,6 +3,7 @@
 
 #include "space.hpp"
 #include <iostream>
+#include <queue>
 #include <string>
 
 class GarbageBin : public Space 
@@ -11,7 +12,7 @@ class GarbageBin : public Space
 
     public:
         GarbageBin();
-        Space* doStuff();
+        Space* doStuff(std::queue<Space*>&inventory);
 };
 
 #endif

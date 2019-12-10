@@ -1,5 +1,6 @@
 #include "game_controller.hpp"
 #include "gameboard.hpp"
+#include <queue>
 
 
 GameController::GameController(string level_name)
@@ -33,11 +34,35 @@ void GameController::Run(string level_name)
         gb.displayBoard();
         cout << rounds - i - 1 << " remaining turns\n";
         action_choice = gb.listOptions();
+        string target_action = "";
         if(action_choice == 1)
         {
+            // Can
+            if(player_object->up->get_proximity_option1() == "Pick Up Beer Can")
+            {
+                cout << "in beer can." << endl;
+                if(inventory.empty())
+                {
+                    target_loc = player_object->up->doStuff(inventory);
+                    cout << "invnetory was empty.\n";
+                    Space* new_space = new Empty();
+                    // Push that new space into the vector of spaces to delete later
+                    gb.add_space_to_vector(new_space);
+                    // set the board's memory space to be that new space
+                    gb.set_new_mem(player_row-1, player_col, new_space );
+                    gb.replace_can_with_space(player_row-1, player_col);
+
+                }
+                else
+                    cout << "Your inventory is full. You can only carry one can because you are so drunk still.\nPlease place the can in the garbage bin.\n";
+            }
+            
+            
+    
+            // Movement
             if(player_row!=0)
             {
-                target_loc = player_object->up->doStuff();
+                target_loc = player_object->up->doStuff(inventory);
                 // If it's an empty space
                 if(target_loc->proximity_option1 == "move")
                 {
@@ -54,7 +79,7 @@ void GameController::Run(string level_name)
         {
             if(player_col!=8)
             {
-                target_loc = player_object->right->doStuff();
+                target_loc = player_object->right->doStuff(inventory);
                 // If it's an empty space
                 if(target_loc->proximity_option1 == "move")
                 {
@@ -71,7 +96,7 @@ void GameController::Run(string level_name)
         {
             if(player_row!=3)
             {
-                target_loc = player_object->down->doStuff();
+                target_loc = player_object->down->doStuff(inventory);
                 // If it's an empty space
                 if(target_loc->proximity_option1 == "move")
                 {
@@ -88,7 +113,7 @@ void GameController::Run(string level_name)
         {
             if(player_col!=0)
             {
-                target_loc = player_object->left->doStuff();
+                target_loc = player_object->left->doStuff(inventory);
                 // If it's an empty space
                 if(target_loc->proximity_option1 == "move")
                 {

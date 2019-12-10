@@ -53,5 +53,7 @@ class Gameboard
         void update_linked_list();
         void set_new_mem(int row, int col, Space* space_pointer);
         void update_player_map(int row, int col);
+        void replace_can_with_space(int row, int col);
+        void add_space_to_vector(Space* space_loc);
 };
 #endif

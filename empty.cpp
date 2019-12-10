@@ -1,4 +1,5 @@
 #include "empty.hpp"
+#include <queue>
 
 Empty::Empty()
 {
@@ -11,7 +12,7 @@ Empty::~Empty()
 
 }
 
-Space* Empty::doStuff()
+Space* Empty::doStuff(std::queue<Space*>&inventory)
 {
     // swap with player
     return this;

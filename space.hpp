@@ -2,6 +2,7 @@
 #define SPACE_HPP
 
 #include <string>
+#include <queue>
 using std::string;
 
 class Space
@@ -19,7 +20,7 @@ class Space
         string type;
         Space();
         ~Space();
-        virtual Space* doStuff(){};
+        virtual Space* doStuff(std::queue<Space*>&inventory){};
         string get_proximity_option1();
         string get_proximity_option2();
 };

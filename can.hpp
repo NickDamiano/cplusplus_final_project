@@ -2,6 +2,7 @@
 #define CAN_HPP
 
 #include <string>
+#include <queue>
 #include <iostream>
 #include "space.hpp"
 using std::endl;
@@ -15,7 +16,7 @@ class Can : public Space
 
     public:
         Can();
-        Space* doStuff();
+        Space* doStuff(std::queue<Space*>&inventory);
 
 };
 
