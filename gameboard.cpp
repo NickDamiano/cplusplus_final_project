@@ -29,14 +29,6 @@ void Gameboard::createMap(string level_name)
         }
     }
     infile.close();
-    for(int i = 0;i<4;i++)
-    {
-        for(int j = 0; j<9;j++)
-        {
-            cout << map[i][j];
-        }
-        cout << endl;
-    }
 }
 
 Space* Gameboard::getSpaceType(int type)
@@ -79,16 +71,6 @@ void Gameboard::createBoard(string level_name)
             temp_space = getSpaceType(map[i][j]);
             gameboard[i][j] = temp_space;
         }
-    }
-
-    for(int i = 0;i<4; i++)
-    {
-        for(int j = 0;j<9; j++)
-        {
-            string option = gameboard[i][j]->get_proximity_option1();
-            cout << option;
-        }
-        cout << endl;
     }
 
 }
@@ -308,4 +290,20 @@ void Gameboard::replace_can_with_space(int row, int col)
 void Gameboard::add_space_to_vector(Space* space_loc)
 {
     all_spaces.push_back(space_loc);
+}
+
+bool Gameboard::can_check()
+{
+    bool result = true;
+    for(int i = 0;i<4; i++)
+    {
+        for(int j = 0;j<9; j++)
+        {
+            if(map[i][j] == 2)
+            {
+                result = false;
+            }
+        }
+    }
+    return result;
 }

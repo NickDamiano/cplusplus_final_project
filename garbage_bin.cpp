@@ -8,7 +8,15 @@ GarbageBin::GarbageBin()
 
 Space* GarbageBin::doStuff(std::queue<Space*>&inventory)
 {
-    inventory.pop();
-    std::cout << "\n\nYOU THREW A BEER CAN AWAY. YOUR INVENTORY IS EMPTY!\n\n";
+    if(inventory.empty())
+    {
+        std::cout << "\n\nYou don't have any cans to throw away.\n\n";
+    }
+    else
+    {
+        inventory.pop();
+        std::cout << "\n\nYOU THREW A BEER CAN AWAY. YOUR INVENTORY IS EMPTY!\n\n";
+    }
+    
     return this;
 }

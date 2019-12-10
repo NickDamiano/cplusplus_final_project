@@ -25,7 +25,7 @@ class GameController
         GameController(string level_name);
         ~GameController();
         void ExecuteRound();
-        void Run(string level_name);
+        bool Run(string level_name);
 
 };
 

@@ -18,7 +18,7 @@ void GameController::ExecuteRound()
 
 }
 
-void GameController::Run(string level_name)
+bool GameController::Run(string level_name)
 {
     Space* target_loc = nullptr;
     Space* temporary_space = nullptr;
@@ -32,7 +32,7 @@ void GameController::Run(string level_name)
         player_col = gb.get_player_col();
         Space* player_object = gb.get_player();
         gb.displayBoard();
-        cout << rounds - i - 1 << " remaining turns\n";
+        cout << rounds - i - 1 << " minutes until Mom and Dad get home!!!\n";
         action_choice = gb.listOptions();
         string target_action = "";
         if(action_choice == 1)
@@ -54,7 +54,6 @@ void GameController::Run(string level_name)
                 // Can
                 if(player_object->up->get_proximity_option1() == "Pick Up Beer Can")
                 {
-                    cout << "in beer can." << endl;
                     if(inventory.empty())
                     {
                         target_loc = player_object->up->doStuff(inventory);
@@ -97,11 +96,9 @@ void GameController::Run(string level_name)
                 // Can
                 if(player_object->right->get_proximity_option1() == "Pick Up Beer Can")
                 {
-                    cout << "in beer can." << endl;
                     if(inventory.empty())
                     {
                         target_loc = player_object->right->doStuff(inventory);
-                        cout << "invnetory was empty.\n";
                         Space* new_space = new Empty();
                         // Push that new space into the vector of spaces to delete later
                         gb.add_space_to_vector(new_space);
@@ -141,7 +138,6 @@ void GameController::Run(string level_name)
                 // Can
                 if(player_object->down->get_proximity_option1() == "Pick Up Beer Can")
                 {
-                    cout << "in beer can." << endl;
                     if(inventory.empty())
                     {
                         target_loc = player_object->down->doStuff(inventory);
@@ -183,7 +179,6 @@ void GameController::Run(string level_name)
                 // Can
                 if(player_object->left->get_proximity_option1() == "Pick Up Beer Can")
                 {
-                    cout << "in beer can." << endl;
                     if(inventory.empty())
                     {
                         target_loc = player_object->left->doStuff(inventory);
@@ -209,22 +204,20 @@ void GameController::Run(string level_name)
         }
             
         gb.update_linked_list();
-                
+        no_cans = gb.can_check();  
+        if(no_cans)
+        {
+            cout << "\n\nYOU GOT THE PARTY CLEANED UP. You're totally NOT busted and Mom and Dad are none the wiser! You win!";
+            return true;
+        }
         
-            // execute top action
-        // if action choice == 2
-            // execute right action
-        // if action choice == 3
-            // execute bottom action
-        // if action choice == 4
-            // execute left action
-        // increment counter
+         
         // perform can check 
             // if no cans
                 // trigger victory return exiting
             // level 2 might happen then
     }
-    // out of rounds trigger parents home oh no
+    return false;
     
 }
 
