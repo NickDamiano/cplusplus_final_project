@@ -10,6 +10,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <queue>
 
 using std::string;
 using std::cout;
@@ -55,6 +56,6 @@ class Gameboard
         void update_player_map(int row, int col);
         void replace_can_with_space(int row, int col);
         void add_space_to_vector(Space* space_loc);
-        bool can_check();
+        bool can_check(std::queue<Space*>&inventory);
 };
 #endif

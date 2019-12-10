@@ -1,4 +1,5 @@
 #include "gameboard.hpp"
+#include <queue>
 #include "menu.hpp"
 
 Gameboard::Gameboard(string level_name)
@@ -292,9 +293,11 @@ void Gameboard::add_space_to_vector(Space* space_loc)
     all_spaces.push_back(space_loc);
 }
 
-bool Gameboard::can_check()
+bool Gameboard::can_check(std::queue<Space*>&inventory)
 {
     bool result = true;
+    if(!inventory.empty())
+        result = false;
     for(int i = 0;i<4; i++)
     {
         for(int j = 0;j<9; j++)

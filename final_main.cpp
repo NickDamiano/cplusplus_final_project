@@ -17,7 +17,7 @@ int main()
 {
     Menu menu;
     bool victory = false;
-    string first_message = "\n\n\nSomewhere in suburban America at 6AM.\n.`RING RING`. `RING RING`. <Hello?>, <Hi Honey! We got an early flight back from Europe and we'll be home in 30 MINUTES.\nSEE YOU SOON!\n";
+    string first_message = "\n\n\nSomewhere in suburban America at 6AM.\n.`RING RING`. `RING RING`. <Hello?>, <Hi Honey! We got an early flight back from Europe and we'll be home in 20 MINUTES.\nSEE YOU SOON!\n";
     string second_message = "You look around. Last night was a RAGING PARTY BRUH. But you got 30 minutes to clean up these beer cans and get your\n friends out the door pronto amigo. GET TO WORK or you're TOTALLY BUSTED.\n\n";
     string ask_to_play = "Do you want to play 'Dont get busted!' ?\n1 - Play\n2 - Quit: ";
     string first_beat = "You've beat the first level. Play level 2?\n1 - Yes\n2 - Quit: ";
@@ -37,7 +37,13 @@ int main()
                 GameController gc2("level_2.txt");
                 victory = gc2.Run("level_2.txt");
                 if(victory)
+                {
                     cout << "\nYou beat the game! You are the ultimate party dude/dudette!\n\n";
+                }
+                else
+                {
+                    cout << "\n\n\nYOU. ARE. TOTALLY. BUSTEDDDDDDDD!\nGrounded for the summer! oh no!\n\nGAME OVER!\n";
+                }
             }
         }
         else

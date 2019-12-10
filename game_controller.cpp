@@ -204,7 +204,7 @@ bool GameController::Run(string level_name)
         }
             
         gb.update_linked_list();
-        no_cans = gb.can_check();  
+        no_cans = gb.can_check(inventory);  
         if(no_cans)
         {
             cout << "\n\nYOU GOT THE PARTY CLEANED UP. You're totally NOT busted and Mom and Dad are none the wiser! You win!";
