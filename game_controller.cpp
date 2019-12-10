@@ -69,6 +69,13 @@ void GameController::Run(string level_name)
                     }
                     else
                         cout << "Your inventory is full. You can only carry one can because you are so drunk still.\nPlease place the can in the garbage bin.\n";
+                    
+                }
+
+                // Garbage bin
+                if(player_object->up->get_proximity_option1() == "Throw away all your garbage")
+                {
+                    player_object->up->doStuff(inventory);
                 }
             }
         }
@@ -105,6 +112,13 @@ void GameController::Run(string level_name)
                     }
                     else
                         cout << "Your inventory is full. You can only carry one can because you are so drunk still.\nPlease place the can in the garbage bin.\n";
+                    
+                }
+
+                // Garbage bin
+                if(player_object->right->get_proximity_option1() == "Throw away all your garbage")
+                {
+                    player_object->right->doStuff(inventory);
                 }
             }
         }
@@ -143,6 +157,12 @@ void GameController::Run(string level_name)
                     else
                         cout << "Your inventory is full. You can only carry one can because you are so drunk still.\nPlease place the can in the garbage bin.\n";
                 }
+
+                // Garbage bin
+                if(player_object->down->get_proximity_option1() == "Throw away all your garbage")
+                {
+                    player_object->down->doStuff(inventory);
+                }
             }
         }
 
@@ -178,6 +198,12 @@ void GameController::Run(string level_name)
                     }
                     else
                         cout << "Your inventory is full. You can only carry one can because you are so drunk still.\nPlease place the can in the garbage bin.\n";
+                }
+
+                // Garbage bin
+                if(player_object->left->get_proximity_option1() == "Throw away all your garbage")
+                {
+                    player_object->left->doStuff(inventory);
                 }
             }
         }

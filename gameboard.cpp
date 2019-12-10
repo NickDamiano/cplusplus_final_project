@@ -10,7 +10,11 @@ Gameboard::Gameboard(string level_name)
 
 Gameboard::~Gameboard()
 {
-
+    for (int i = 0;i< all_spaces.size(); i++)
+    {
+        delete all_spaces[i];
+        all_spaces[i] = nullptr;
+    }
 }
 
 void Gameboard::createMap(string level_name)
